@@ -187,6 +187,72 @@ WHERE EMP_NAME LIKE '전%';
 -- WHERE EMP_NAME LIKE '전__';
 
 
+-- EMPLOYEE 테이블에서 전화번호가 '010' 으로 시작하는 사원의
+-- 사번, 이름, 전화번호 조회
+SELECT EMP_ID, EMP_NAME, PHONE
+FROM EMPLOYEE
+WHERE PHONE LIKE '010%';
+
+-- EMPLOYEE 테이블에서 전화번호가 '010' 으로 시작하지 않는 사원의
+-- 사번, 이름, 전화번호 조회
+SELECT EMP_ID, EMP_NAME, PHONE
+FROM EMPLOYEE
+WHERE PHONE NOT LIKE '010%';
+
+-- EMAIL에서 _ 앞에 글자가 세글자인 사원 이름, 이메일 조회
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '____'; 
+-- 문제점 : '_' 를 기준점으로 삼았으나, 패턴중 '_'와 동일한 표기법으로 작성되어
+-- 				구분이 되지 않음
+
+-- 해결방법 : LIKE 의 ESCAPE OPTION 을 이용하여 _ 를 구분한다.
+
+-- LIKE 의 ESCAPE OPTION : 일반 문자로 처리할 '_' / '%' 앞에 
+-- 											아무 특수기호를 첨부해서 구분하게함
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '___@_%' ESCAPE '@';
+--> @ 뒤에 작성된 _ 는 일반 문자로 탈출시킨다.
+
+-- 연습문제
+-- EMPLOYEE 테이블에서 
+-- 이메일 '_' 앞이 4글자 이면서
+-- 부서코드가 'D9' 또는 'D6'이고  -> AND가 OR보다 우선순위가 높다, () 사용 가능
+-- 입사일이 1990-01-01 ~ 2000-12-31 이고
+-- 급여가 270만 이상인 사원의
+-- 사번, 이름, 이메일, 부서코드, 입사일, 급여 조회
+
+SELECT EMP_ID, EMP_NAME, EMAIL, DEPT_CODE, HIRE_DATE, SALARY
+FROM EMPLOYEE
+WHERE EMAIL LIKE '____@_%' ESCAPE '@' 
+			AND (DEPT_CODE = 'D9' OR DEPT_CODE = 'D6')
+			AND HIRE_DATE BETWEEN '1990-01-01' AND '2000-12-31'
+			AND SALARY >= 2700000;
+		
+-- 연산자 우선순위 --
+
+/* 0. () 
+ * 1. 산술연산자 ( + , - , * , / )
+ * 2. 연결연산자 ( || )
+ * 3. 비교연산자 ( < > <= >= = != <> )
+ * 4. IS NULL / IS NOT NULL , LIKE , IN / NOT IN
+ * 5. BETWEEN AND / NOT BETWEEN AND
+ * 6. NOT (논리 연산자) 
+ * 7. AND (논리 연산자)
+ * 8. OR (논리 연산자)
+ * 
+ */
+
+
+
+
+
+
+
+
+
+
 
 
 
