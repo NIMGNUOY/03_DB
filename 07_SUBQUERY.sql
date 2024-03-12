@@ -149,7 +149,7 @@ HAVING SUM(SALARY) =
  * - > ANY , < ANY : 여러개의 결과값 중에서 한 개라도 큰 / 작은 경우
  * 									( 가장 작은 값보다 큰가? OR 가장 큰 값보다 작은가? )
  * 
- * - > OR , < OR : 여러개의 결과값의 모든 값보다 큰 / 작은 경우
+ * - > ALL , < ALL : 여러개의 결과값의 모든 값보다 큰 / 작은 경우
  * 									( 가장 큰 값보다 큰가? OR 가장 작은 값보다 작은가? )
  * 
  * - EXISTS , NOT EXISTS : 값이 존재하는가 ? or 존재하지 않는가 ?
@@ -322,7 +322,8 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID			-- 결과값이 다중행이기 때문에 '
 										JOIN LOCATION ON (LOCATION_ID = LOCAL_CODE)
 										WHERE LOCATION_ID = (SELECT LOCAL_CODE		-- 결과값이 단일행이기 때문에 비교연산자(=) 사용
 										 										 FROM LOCATION
-										 										 WHERE NATIONAL_CODE = 'KO'));
+										 										 WHERE NATIONAL_CODE = 'KO'))
+ORDER BY 3;
 										 										
 										 										
 -----------------------------------------------------------------------------------------------------------------
