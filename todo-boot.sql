@@ -33,4 +33,44 @@ VALUES(SEQ_TODO_NO.NEXTVAL, '테스트 제목3', '테스트 내용3', DEFAULT, D
 
 SELECT * FROM TB_TODO;
 
+<<<<<<< HEAD
 COMMIT;
+=======
+COMMIT;
+
+
+SELECT TODO_NO, TODO_TITLE, TODO_CONTENT, COMPLETE,
+TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE
+FROM TB_TODO
+ORDER BY TODO_NO;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 8671d6de853845f42242f0bcee92f60d21b4982a
