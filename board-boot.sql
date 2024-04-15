@@ -50,10 +50,10 @@ CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE;
 -- 샘플 회원 데이터 삽입
 INSERT INTO "MEMBER"
 VALUES(SEQ_MEMBER_NO.NEXTVAL, 
-			 'user01@kh.or.kr',
-			 'pass01!',
-			 '유저일',
-			 '01012341234',
+			 'user02@kh.or.kr',
+			 'pass02!',
+			 '유저이',
+			 '01012345678',
 			 NULL,
 			 NULL,
 			 DEFAULT,
@@ -64,7 +64,10 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL,
 COMMIT;
 
 
+
 SELECT * FROM "MEMBER";
+
+UPDATE "MEMBER" SET MEMBER_ADDRESS = '12345^^^서울시 종로구 남대문로 120^^^2층' WHERE MEMBER_NO = 2;
 
 
 UPDATE "MEMBER" SET MEMBER_PW = '$2a$10$x5p72gMLlK29xUN1bdMh9.PXkWUsL9XZ8d7VS6ISLGNjrlidDJr0.'
